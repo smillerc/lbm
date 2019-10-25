@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 cmake_policy(SET CMP0074 NEW)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # set output paths for modules, archives, and executables
 set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/include)
@@ -68,7 +68,7 @@ message(STATUS "Compile Flags: " ${CMAKE_Fortran_FLAGS})
 
 add_subdirectory(src/third_party)
 add_subdirectory(src)
-add_subdirectory(tests/unit)
+# add_subdirectory(tests/unit)
 
 
 
