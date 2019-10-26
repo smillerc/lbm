@@ -24,6 +24,9 @@ add_library(lbm
             # lib/io/mod_hdf5.f90
             lib/io/mod_input.f90
             # lib/io/mod_xdmf.f90
+            lib/lattices/lattice_type.f90
+            lib/lattices/lattice_factory.f90
+            lib/lattices/d2q9.f90
             # lib/lattice_types/mod_d1q3.f90
             # lib/lattice_types/mod_d2q9.f90
             # lib/lattice_types/mod_d3q15.f90

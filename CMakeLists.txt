@@ -41,12 +41,13 @@ if(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
   find_package(Coarray REQUIRED)
   list(APPEND CMAKE_Fortran_FLAGS ${Coarray_COMPILE_OPTIONS})
 
-  list(APPEND CMAKE_Fortran_FLAGS "-cpp -ffree-line-length-512 -std=f2018")
+  list(APPEND CMAKE_Fortran_FLAGS "-cpp -ffree-line-length-512 -std=f2018 -fcoarray=single")
   set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g\
     -O0 -g -Wall -Wextra \
     -Wconversion \
     -fimplicit-none -fbacktrace \
     -fcheck=all \
+    -fcoarray=single \
     -ffpe-trap=zero,overflow,underflow -finit-real=nan \
     ")
 
@@ -62,13 +63,14 @@ if(CMAKE_Fortran_COMPILER_ID STREQUAL Intel)
 endif()
 
 message(STATUS "Compile Flags: " ${CMAKE_Fortran_FLAGS})
+message(STATUS "Compile Flags Release: " ${CMAKE_Fortran_FLAGS_RELEASE})
 
 # add_library(clfortran src/lib/opencl/mod_clfortran.f90)
 # target_link_libraries(clfortran OpenCL::OpenCL)
 
 add_subdirectory(src/third_party)
 add_subdirectory(src)
-# add_subdirectory(tests/unit)
+add_subdirectory(tests/unit)
 
 
 
