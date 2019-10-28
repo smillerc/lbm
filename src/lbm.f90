@@ -2,8 +2,8 @@ program lbm
 
   use mod_kinds, only: ik, rk
   use mod_input, only: input_t
-  ! use mod_grid, only : grid_t
-  ! use mod_grid_factory, only : grid_factory_t
+  use mod_sim_type, only: base_sim_t
+  use mod_sim_factory, only: sim_factory_t
 
   implicit none
 
@@ -11,8 +11,8 @@ program lbm
   character(50) :: input_filename
   character(50) :: contour_filename
   class(input_t), allocatable :: input
-  ! class(grid_factory_t), allocatable :: grid_factory
-  ! class(grid_t), pointer :: grid => null()
+  class(sim_factory_t), allocatable :: sim_factory
+  class(base_sim_t), pointer :: grid => null()
   integer(ik) :: t = 0
 
   call get_command_argument(1, command_line_arg)
@@ -21,8 +21,8 @@ program lbm
   allocate(input_t :: input)
   call input%read(input_filename)
 
-  ! allocate(grid_factory_t :: grid_factory)
-  ! grid => grid_factory%create_grid(input)
+  allocate(sim_factory_t :: sim_factory)
+  grid => sim_factory%create_sim(input)
 
   time_loop: do t = 1, input%nsteps
 
@@ -37,5 +37,7 @@ program lbm
     ! call grid%stream()
 
   end do time_loop
+
+  call sim_factory%finalize()
 
 end program lbm

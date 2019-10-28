@@ -1,47 +1,32 @@
 add_library(lbm
-    #         lib/collision_operators/mod_collision_operator.f90
-    #         lib/fluids/mod_base_fluid.f90
-    #         lib/fluids/mod_charged_fluid.f90
-    #         lib/fluids/mod_electron_fluid.f90
-    #         lib/fields/mod_em_field.f90
-    #         lib/fields/mod_field_abstract.f90
-    #         lib/fluids/mod_ion_fluid.f90
-    #    #      lib/fields/mod_magnetic_field.f90
-    #         lib/fluids/mod_neutral_fluid.f90
-    #       #   lib/fluids/mod_neutral_fluid_1d.f90
-    #         lib/fluids/mod_neutral_fluid_2d.f90
-    #       #   lib/fluids/mod_neutral_fluid_3d.f90
-    #         lib/grid/mod_grid.f90
-    #         lib/grid/mod_grid_factory.f90
-    #         lib/grid/mod_grid_two_fluid.f90
-    #         lib/grid/mod_grid_single_fluid_1d.f90
-    #         lib/grid/mod_grid_single_fluid_2d.f90
-    #         lib/grid/mod_grid_single_fluid_3d.f90
-            lib/io/ini_parser/cfgio_mod.f90
-            lib/io/ini_parser/string_conv_mod.f90
-            # lib/io/mod_io_factory.f90
-            # lib/io/mod_io.f90
-            # lib/io/mod_hdf5.f90
-            lib/io/mod_input.f90
-            # lib/io/mod_xdmf.f90
+            lib/mod_kinds.f90
+            lib/collision_operators/collision_operator_factory.f90
+            lib/collision_operators/bgk_collision.f90
+            lib/collision_operators/entropic_collision.f90
+            lib/collision_operators/collision_operator.f90
+            lib/collision_operators/particles_on_demand_collision.f90
+            lib/lattices/d2q9_type.f90
             lib/lattices/lattice_type.f90
             lib/lattices/lattice_factory.f90
-            lib/lattices/d2q9.f90
-            # lib/lattice_types/mod_d1q3.f90
-            # lib/lattice_types/mod_d2q9.f90
-            # lib/lattice_types/mod_d3q15.f90
-            # lib/lattice_types/mod_d3q19.f90
-            # lib/lattice_types/mod_d3q19_em.f90
-            # lib/lattice_types/mod_d3q27.f90
-            # lib/lattice_types/mod_lattice_abstract.f90
-            # lib/lattice_types/mod_lattice_factory.f90
-            # lib/mod_arrays.f90
-            # lib/mod_constants.f90
-            # lib/mod_eos.f90
-            lib/mod_kinds.f90
-            # lib/parallel/mod_parallel.f90
-            # lib/throw.f90
+            lib/io/mod_io_factory.f90
+            lib/io/mod_input.f90
+            lib/io/mod_io.f90
+            lib/io/mod_xdmf.f90
+            lib/io/mod_hdf5.f90
+            lib/io/ini_parser/string_conv_mod.f90
+            lib/io/ini_parser/cfgio_mod.f90
+            lib/simulation/simulation_type.f90
+            lib/simulation/sim_2d_type.f90
+            lib/simulation/sim_factory.f90
+            lib/streaming_operators/streaming_operator_factory.f90
+            lib/fluids/fluid_factory.f90
+            lib/fluids/fluid_2d_type.f90
+            lib/fluids/2d_fluid.f90
+            lib/fluids/fluid_type.f90
+            lib/eos/eos_factory.f90
             )
+
+
 
 include_directories(${HDF5_INCLUDE_DIRS})
 target_include_directories(lbm PUBLIC ${HDF5_INCLUDE_DIRS})
