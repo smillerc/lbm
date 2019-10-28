@@ -1,4 +1,4 @@
-module mod_d2q9
+module mod_d2q9_type
   !> Summary: Define the specifics of the D2Q9 lattice structure
 
   use mod_kinds, only: ik, rk
@@ -10,7 +10,7 @@ module mod_d2q9
 
   type, extends(base_2d_lattice_t) :: d2q9_lattice_t
   contains
-    procedure :: init => init_d2q9
+    procedure :: initialize => init_d2q9
   end type d2q9_lattice_t
 
 contains
@@ -52,4 +52,4 @@ contains
 
   end subroutine init_d2q9
 
-end module mod_d2q9
+end module mod_d2q9_type

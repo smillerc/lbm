@@ -19,7 +19,7 @@ module mod_lattice_type
     integer(ik), dimension(:), allocatable :: neighbor_indices  !! Lattice velocities unit vectors
 
   contains
-    procedure(init), public, deferred :: init
+    procedure(initialize), public, deferred :: initialize
   end type base_lattice_t
 
   type, abstract, extends(base_lattice_t) :: base_2d_lattice_t
@@ -28,11 +28,11 @@ module mod_lattice_type
   end type base_2d_lattice_t
 
   abstract interface
-    subroutine init(self)
+    subroutine initialize(self)
       use mod_kinds, only: ik, rk
       import :: base_lattice_t
       class(base_lattice_t), intent(inout) :: self
-    end subroutine init
+    end subroutine initialize
   end interface
 
 end module mod_lattice_type
