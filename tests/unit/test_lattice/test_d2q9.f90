@@ -1,5 +1,5 @@
 module lattice_mod
-  use mod_d2q9, only: d2q9_lattice_t
+  use mod_d2q9_type, only: d2q9_lattice_t
   use mod_kinds, only: ik, rk
   implicit none
 
@@ -7,10 +7,10 @@ module lattice_mod
 
 contains
 
-  subroutine init()
+  subroutine initialize()
     allocate(d2q9_lattice_t :: lattice)
-    call lattice%init()
-  end subroutine init
+    call lattice%initialize()
+  end subroutine initialize
 
   subroutine test_basic()
     !< Test basic settings like weights, dimension, etc.
@@ -60,7 +60,7 @@ program test_lattices
   use lattice_mod
   implicit none
 
-  call init()
+  call initialize()
   call test_basic()
   call test_neighbors()
 
