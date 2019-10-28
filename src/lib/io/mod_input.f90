@@ -44,6 +44,12 @@ module mod_input
 
     ! lattice
     character(:), allocatable :: lattice_type
+
+    ! Lattice Scheme
+    character(:), allocatable :: lattice_scheme !< Lattice scheme (BGK, Particles on Demand, Entropic)
+    character(:), allocatable :: collision_scheme  !< Type of collisions used (BGK, MRT, Entropic, etc.)
+    character(:), allocatable :: stream_scheme  !< What type of streaming? (classic, off-lattice, particles on demand, etc.)
+
   contains
     procedure, public :: read
   end type input_t

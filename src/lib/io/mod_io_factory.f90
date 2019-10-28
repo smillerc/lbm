@@ -4,7 +4,8 @@ module mod_io_factory
   use mod_io, only: contour_writer_t
   use mod_xdmf, only: xdmf_contour_t
   use mod_input, only: input_t
-  use mod_grid, only: grid_t
+  use mod_sim_type, only: base_sim_t
+
   implicit none
 
   private
@@ -15,14 +16,14 @@ module mod_io_factory
     character(:), allocatable :: format
   contains
     private
-    procedure, public :: init
+    procedure, public :: initialize
     procedure, public :: create
     procedure, public :: finalize
   end type io_factory_t
 
 contains
 
-  subroutine init(self, format)
+  subroutine initialize(self, format)
     class(io_factory_t), intent(inout) :: self
     character(*), intent(in) :: format
 
@@ -49,7 +50,7 @@ contains
 
     case('xdmf')
       allocate(xdmf_contour_t :: ptr)
-      call self%contour_writer_ptr%init(timestep, time, nx_ny_nz, ndim)
+      call self%contour_writer_ptr%initialize(timestep, time, nx_ny_nz, ndim)
       ptr => self%contour_writer_ptr
 
     case default

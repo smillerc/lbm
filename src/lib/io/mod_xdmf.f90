@@ -24,7 +24,7 @@ module mod_xdmf
     character(:), allocatable :: time_str
     integer(ik) :: xml_file_id
   contains
-    procedure, public :: init => init_xdmf
+    procedure, public :: initialize => init_xdmf
     procedure, public :: finalize => final_xdmf
     procedure, public :: add_header => write_xdmf_header
     procedure, private :: add_int_1d => xdmf_add_int_1d

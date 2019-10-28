@@ -22,7 +22,7 @@ module mod_io
     integer(ik), allocatable, dimension(:), public :: shape
   contains
     private
-    procedure(init), deferred, public :: init
+    procedure(initialize), deferred, public :: initialize
     procedure(add_header), deferred, public :: add_header
     procedure(finalize), deferred, public :: finalize
 
@@ -39,7 +39,7 @@ module mod_io
   end type contour_writer_t
 
   abstract interface
-    subroutine init(self, timestep, time, nx_ny_nz, ndim)
+    subroutine initialize(self, timestep, time, nx_ny_nz, ndim)
       import :: contour_writer_t
       import :: rk
       import :: ik
@@ -48,7 +48,7 @@ module mod_io
       integer(ik), intent(in) :: timestep
       integer(ik), intent(in) :: nx_ny_nz(3)
       integer(ik), intent(in) :: ndim
-    end subroutine init
+    end subroutine initialize
 
     subroutine finalize(self)
       import :: contour_writer_t
